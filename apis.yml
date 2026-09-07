@@ -1,0 +1,50 @@
+name: Neuronto ARD Registry
+description: Agentic Resource Discovery (ARD) index. One search covers this index and every other public ARD registry,
+  and results carry the tools each MCP server actually exposes, read from its own tools/list.
+url: https://raw.githubusercontent.com/api-evangelist/neuronto/refs/heads/main/apis.yml
+created: '2026-08-31'
+modified: '2026-09-07'
+specificationVersion: '0.23'
+tags:
+- Agentic Resource Discovery
+- ARD
+- MCP
+- A2A
+- API Discovery
+- Registry
+apis:
+- aid: neuronto:ard-registry
+  name: Neuronto ARD Registry API
+  description: 'Search, explore and audit Agentic Resource Discovery entries: MCP servers, A2A agents, OpenAPI services
+    and documentation. REST, MCP and A2A answer from one index. No key, no signup.'
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Agentic Resource Discovery
+  - ARD
+  - MCP
+  - A2A
+  - API Discovery
+  - Registry
+  properties:
+  - type: OpenAPI
+    url: https://neuronto.com/openapi.json
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServer
+    url: https://neuronto.com/mcp
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+maintainers:
+- FN: Neuronto
+  url: https://neuronto.com
+x-source:
+  via: api-search/inbox#24; built from the provider-served apis.json (200) -- one of three ever to resolve
+  fetched: '2026-09-07'
+  note: Only the self url re-pointed; descriptor is theirs.
