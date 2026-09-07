@@ -1,0 +1,73 @@
+generated: '2026-09-07'
+method: derived
+source: mcp/neuronto-mcp-tools.json + openapi/neuronto-openapi.json
+name: Neuronto MCP Tool to OpenAPI Crosswalk
+description: Binds each of the 4 live MCP tools (read from tools/list, unauthenticated)
+  to the REST operations in the provider's own OpenAPI 3.1.0 document. Both surfaces
+  answer from the same index, and the provider's llms.txt states the MCP endpoint
+  is "the same search as an MCP tool", so bindings are high confidence.
+surfaces:
+  openapi: openapi/neuronto-openapi.json
+  mcp:
+    url: https://neuronto.com/mcp
+    gated: false
+  a2a:
+    url: https://neuronto.com/a2a
+    gated: false
+crosswalk:
+- tool: find_resource
+  category: search
+  rest: [search_endpoint_search_post]
+  binding: POST /search with {"query":{"text":...},"federation":"auto"} mirrors the
+    tool's query/kind/limit/federate inputs.
+  confidence: high
+- tool: find_tool
+  category: search
+  rest: [tools_endpoint_tools_post, tools_get_tools_get]
+  binding: POST /tools (and GET /tools?q=) is the per-tool search the MCP tool wraps;
+    with_schema maps to the endpoint's schema option.
+  confidence: high
+- tool: publish_resource
+  category: publishing
+  rest: [submit_endpoint_submit_post]
+  binding: POST /submit accepts the same {endpoint} or {domain} body and applies the
+    same verification (initialize handshake / manifest parse) before listing.
+  confidence: high
+- tool: registry_stats
+  category: stats
+  rest: [stats_stats_get]
+  binding: GET /stats returns the same index counts, families, sources and upstreams.
+  confidence: high
+mcp_only: []
+rest_only:
+- explore_endpoint_explore_post
+- agents_endpoint_agents_get
+- health_health_get
+- audit_endpoint_audit_post
+- demand_endpoint_demand_get
+- manifest_build_manifest_build_post
+- claim_start_claim_post
+- claim_verify_claim_verify_post
+- private_list_private_entries_get
+- private_add_private_entries_post
+- private_delete_private_entries_delete
+- doctor_endpoint_doctor_post
+- plan_endpoint_plan_post
+- me_endpoint_me_get
+- analytics_page_analytics_get
+- usage_endpoint_usage_get
+- web_position_endpoint_web_position_get
+- insights_endpoint_insights_get
+- bench_endpoint_bench_get
+- adoption_endpoint_adoption_get
+- state_of_mcp_state_of_mcp_get
+- reliability_report_reliability_get
+- tool_safety_tool_safety_get
+- liveness_feed_liveness_get
+- submit_status_submit_status__sid__get
+- submit_status_for_submit_status_get
+coverage:
+  mcp_tools: 4
+  mcp_tools_bound: 4
+  rest_operations: 31
+  rest_operations_bound: 5

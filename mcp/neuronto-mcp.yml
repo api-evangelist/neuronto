@@ -1,0 +1,42 @@
+generated: '2026-09-07'
+method: probed
+source: https://neuronto.com/mcp
+name: Neuronto ARD Registry MCP Server
+description: Official hosted MCP server for the Neuronto ARD Registry. tools/list
+  answered a live anonymous POST on 2026-09-07 (HTTP 200, application/json) with
+  4 tools; the response is saved verbatim in neuronto-mcp-tools.json. The server
+  is also declared in the provider's MCP server card at
+  /.well-known/mcp/server-card.json (protocolVersion 2025-06-18) and published in
+  the official MCP Registry as com.neuronto/agents-tools-search-discovery-ard-registry
+  (namespace DNS-verified, status active, v1.2.0).
+deployment:
+  mode: remote
+  endpoint: https://neuronto.com/mcp
+  auth: none
+  verified: probed
+protocol_version: '2025-06-18'
+transport: streamable-http
+server_card: ../well-known/neuronto-mcp-server-card.json
+registry_listing: https://registry.modelcontextprotocol.io/v0/servers?search=neuronto
+tools:
+- name: find_resource
+  title: Find an agentic resource
+  read_only: true
+  description: Search for an MCP server, skill, agent, API or other callable
+    capability for a task, across this index and every other public ARD registry
+    at once.
+- name: find_tool
+  title: Find a specific verified tool
+  read_only: true
+  description: Search individual MCP tools by name and behaviour; every tool
+    returned was read back from a live server's tools/list.
+- name: publish_resource
+  title: Publish a resource to the index
+  read_only: false
+  description: List an MCP server (verified by initialize handshake) or an
+    ARD-publishing domain (manifest must parse) in the index.
+- name: registry_stats
+  title: Index statistics
+  read_only: true
+  description: Index size, verification counts, and federated upstream registries.
+tools_list_response: neuronto-mcp-tools.json

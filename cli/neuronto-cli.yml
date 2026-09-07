@@ -1,0 +1,42 @@
+generated: '2026-09-07'
+method: searched
+source: https://pypi.org/project/neuronto/
+name: Neuronto CLIs
+description: Two first-party command-line tools, both published on PyPI and documented
+  in their package READMEs.
+clis:
+- name: neuronto
+  install:
+  - pip install neuronto
+  version: 1.0.0
+  description: Search the federated ARD index from the command line. Python 3.9+,
+    no dependencies, no account or key required.
+  commands:
+  - command: neuronto "<task>"
+    purpose: Search for an MCP server, skill, agent or API that can do a task.
+  - command: neuronto tools "<task>"
+    purpose: Search individual verified tools rather than whole servers.
+  - command: neuronto stats
+    purpose: What the index holds, measured.
+  - command: neuronto dead
+    purpose: Endpoints that stopped answering.
+  flags: ['--limit N', '--kind mcp|api|skill|agent', '--local', '--json', '--key KEY']
+- name: ard-publish
+  install:
+  - pip install ard-publish
+  version: 1.2.1
+  description: Build, validate and verify an ARD manifest for your own domain, and
+    submit an MCP endpoint or domain for indexing. Includes a graded discoverability
+    check (letter grade over manifest, advertisement paths, conformance, searchability
+    and registry coverage).
+  commands:
+  - command: ard-publish init <domain>
+    purpose: Scaffold a valid /.well-known/ard.json manifest.
+  - command: ard-publish validate <file>
+    purpose: Check a manifest locally.
+  - command: ard-publish check <domain>
+    purpose: Check a live domain's discoverability, graded.
+  - command: ard-publish generate <domain>
+    purpose: Build a manifest from what the domain already serves.
+  - command: ard-publish submit <endpoint>
+    purpose: Submit an MCP endpoint or domain to the index.

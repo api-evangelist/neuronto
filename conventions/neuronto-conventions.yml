@@ -1,0 +1,65 @@
+generated: '2026-09-07'
+method: searched
+source: https://neuronto.com/llms.txt + openapi/neuronto-openapi.json + https://neuronto.com/pricing
+name: Neuronto API Conventions
+description: Cross-cutting semantics of the Neuronto ARD Registry API, read from the
+  provider's own llms.txt, OpenAPI document, pricing page and live responses.
+auth:
+  style: anonymous-by-default, optional API key to raise allowances
+  reference: authentication/neuronto-authentication.yml
+idempotency:
+  coverage: partial
+  scope:
+  - submit_endpoint_submit_post
+  mechanism: Natural idempotency by resource identity, not a header. The provider
+    documents that one submission is enough - a resubmission of the same domain or
+    endpoint does not create a duplicate, an unverified submission is retried
+    automatically for ~2.5 days, and its state is readable at GET /submit/status/{sid}.
+    The MCP publish_resource tool declares idempotentHint true. No Idempotency-Key
+    header exists, and the other write operations (/claim, /private/entries) document
+    no replay semantics.
+  evidence: https://neuronto.com/llms.txt ("One call is enough; there is no need to
+    resubmit.")
+reversibility:
+  summary: The surface is almost entirely read-only; of the write operations, only
+    the private-index entries have a documented reversal path.
+  writes:
+  - operation: private_add_private_entries_post
+    reversal: private_delete_private_entries_delete
+    grade: documented
+    window: null
+    note: DELETE /private/entries removes an internal service, scoped to the
+      caller's own domain key. No time window is stated.
+  - operation: submit_endpoint_submit_post
+    reversal: null
+    grade: none
+    note: No public delisting/withdrawal operation is documented; dead endpoints
+      are demoted by the provider's own probing rather than by publisher action.
+  - operation: claim_start_claim_post
+    reversal: null
+    grade: none
+pagination:
+  style: paginated object
+  operations: [agents_endpoint_agents_get]
+  note: GET /agents is the ARD specification's deterministic paginated listing; the
+    provider highlights passing conformance "including GET /agents as a paginated
+    object".
+error_envelope:
+  shape: FastAPI HTTPValidationError (detail[] of {loc, msg, type}) on 422
+  reference: errors/neuronto-problem-types.yml
+rate_limit_signaling:
+  headers: [X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset]
+  observed: true
+  reference: rate-limits/neuronto-rate-limits.yml
+versioning:
+  api_paths: unversioned
+  spec: ARD manifest carries specVersion (1.0); the MCP server card carries
+    protocolVersion 2025-06-18; the A2A card carries protocolVersion 0.3.
+request_tracing:
+  headers: [x-response-time-ms]
+  note: Response-time header observed on live responses; no request-id header
+    observed.
+dual_serving:
+  note: GET /tools serves JSON with ?q= and a human-readable capability index
+    without it - one URL deliberately serving both agents and crawlers (documented
+    in the OpenAPI operation description).

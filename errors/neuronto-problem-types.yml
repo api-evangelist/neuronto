@@ -1,0 +1,40 @@
+generated: '2026-09-07'
+method: derived
+source: openapi/neuronto-openapi.json
+name: Neuronto Error Catalog
+description: Error responses derived from the provider's own OpenAPI 3.1.0 document.
+  The API is FastAPI-shaped - validation failures return a 422 HTTPValidationError
+  envelope (detail[] of {loc, msg, type}), not RFC 9457 problem+json. Rate-limit
+  exhaustion returns 429 with X-RateLimit-* headers (observed live; see
+  rate-limits/).
+format: fastapi-validation
+envelope:
+  schema: HTTPValidationError
+  field: detail
+problems:
+- status: 422
+  title: Validation Error
+  detail: Request body or parameters failed schema validation. Returned by 26 of 31
+    operations (every operation that takes input).
+  remediation: Read detail[].loc and detail[].msg for the failing field.
+- status: 400
+  title: Bad submission
+  detail: POST /submit rejected the body (neither a usable endpoint nor a domain).
+  operations: [submit_endpoint_submit_post]
+- status: 404
+  title: Not found
+  detail: POST /submit could not fetch anything to verify from the given
+    domain/endpoint.
+  operations: [submit_endpoint_submit_post]
+- status: 202
+  title: Pending (not an error)
+  detail: A submission that does not verify at that moment answers 202 with status
+    "pending", a submission id and evidence of what the endpoint returned; it is
+    retried automatically for about two and a half days (documented in llms.txt).
+  operations: [submit_endpoint_submit_post]
+- status: 429
+  title: Rate limit exceeded
+  detail: Documented allowances (60 submissions/hour, 30 audits/hour anonymous) are
+    enforced; X-RateLimit-Limit/Remaining/Reset headers observed on live responses.
+  remediation: Wait for the epoch second in X-RateLimit-Reset, or verify a domain
+    for ~6x allowances.

@@ -1,0 +1,54 @@
+generated: '2026-09-07'
+method: searched
+source: https://neuronto.com/pricing
+name: Neuronto Plans and Pricing
+description: Four published tiers. Everything - search, publishing, console, data
+  feeds and the API - is free without a key or time limit; keys only raise
+  allowances. The provider states position in results is never sold.
+plan_count: 4
+currency: null
+plans:
+- name: Free
+  price: 0
+  billing: none
+  key_required: false
+  includes:
+  - Search including federation across every public ARD registry
+  - Publishing (submit a domain or endpoint, get indexed, stay current)
+  - Console (audit, coverage, demand, doctor for any domain)
+  - All data feeds (liveness, reliability, tool safety, state of MCP, adoption, benchmark)
+  - /insights rank tracking with 7 days of history
+  - /usage and /web-position
+  limits:
+  - 60 submissions/hour
+  - 30 audits/hour
+- name: Verified
+  price: 0
+  billing: none
+  key_required: true
+  how: Prove domain control with one DNS record
+  includes:
+  - Same features as Free
+  - 30 days of rank history
+  - Searches made with the key are not logged
+  limits:
+  - 300 submissions/hour
+  - 200 audits/hour
+- name: Pro
+  price: contact
+  billing: contact
+  key_required: true
+  audience: A service calling the index on behalf of many users or agents
+  includes:
+  - Allowances ~5x the Verified tier
+  - 90 days of rank history
+  - Metering readable at GET /me
+  - Named support contact
+  note: No self-serve checkout; the provider says pricing is quoted on request.
+- name: Private index
+  price: contact
+  billing: contact
+  audience: Organisations indexing internal services for their own agents
+  includes:
+  - Isolated private tables, never mixed with or ranked against the public index
+  note: Priced when somebody wants it (provider's wording).

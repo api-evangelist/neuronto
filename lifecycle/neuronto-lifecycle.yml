@@ -1,0 +1,29 @@
+generated: '2026-09-07'
+method: probed
+source: live probes of neuronto.com, 2026-09-07
+name: Neuronto Lifecycle Profile
+description: An honest thin profile - the service is young (created 2026-08-31) and
+  publishes no status page, no deprecation policy, no SLA and no dated changelog.
+  What it does publish is a health endpoint and reliability/liveness feeds, which
+  measure the endpoints it indexes rather than its own uptime.
+status_page: null
+status_page_probe:
+  url: https://neuronto.com/status
+  status: 404
+deprecation_policy: null
+sla: null
+changelog: null
+changelog_probe:
+  url: https://neuronto.com/changelog
+  status: 404
+health:
+  url: https://neuronto.com/health
+  status: 200
+  note: Returns index counts alongside status ok.
+deprecated_operations: []
+versioning: Unversioned API paths; the ARD manifest carries specVersion 1.0.
+blog:
+  url: https://neuronto.com/blog
+  feed: https://neuronto.com/feed.xml
+  note: Blog and RSS feed exist; the "Writing" section carries measurement essays
+    rather than a release changelog.

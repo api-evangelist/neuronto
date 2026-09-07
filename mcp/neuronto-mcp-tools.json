@@ -1,0 +1,139 @@
+{
+ "jsonrpc": "2.0",
+ "id": 1,
+ "result": {
+  "tools": [
+   {
+    "name": "find_resource",
+    "title": "Find an agentic resource",
+    "description": "Search for an MCP server, skill, agent, API or other callable capability for a task, across this index and every other public ARD registry at once. Returns ranked matches with a relevance score, the endpoint to connect to, and which registries carry each result. The score is relevance only and is not a trust or safety rating.",
+    "annotations": {
+     "title": "Find an agentic resource",
+     "readOnlyHint": true,
+     "destructiveHint": false,
+     "idempotentHint": true,
+     "openWorldHint": true
+    },
+    "inputSchema": {
+     "type": "object",
+     "properties": {
+      "query": {
+       "type": "string",
+       "description": "The task, in plain language. For example: 'scrape a website behind cloudflare'."
+      },
+      "kind": {
+       "type": "string",
+       "enum": [
+        "any",
+        "mcp-server",
+        "skill",
+        "a2a-agent",
+        "agent",
+        "webmcp",
+        "plugin",
+        "openapi",
+        "graphql",
+        "dataset",
+        "package",
+        "doc",
+        "catalog",
+        "registry"
+       ],
+       "description": "Restrict to one family of resource. Matching is normalised, so 'mcp-server' finds them under every media type in circulation, and 'a2a-agent' or 'agent' both reach A2A cards and ACP, OASF and AgentFacts descriptors. 'webmcp' is browser-page tools, which are not callable servers.",
+       "default": "any"
+      },
+      "limit": {
+       "type": "integer",
+       "minimum": 1,
+       "maximum": 50,
+       "default": 8
+      },
+      "federate": {
+       "type": "boolean",
+       "default": true,
+       "description": "Also query upstream registries live and fuse the rankings. Off is faster."
+      }
+     },
+     "required": [
+      "query"
+     ]
+    }
+   },
+   {
+    "name": "find_tool",
+    "title": "Find a specific verified tool",
+    "description": "Search individual MCP tools by name and behaviour, not the servers that host them. Every tool returned here was read back from a live server's tools/list, so the name and input schema are what the server actually exposes rather than what its description claims. Use this when you know the shape of the call you need; use find_resource when you are looking for a service.",
+    "annotations": {
+     "title": "Find a specific verified tool",
+     "readOnlyHint": true,
+     "destructiveHint": false,
+     "idempotentHint": true,
+     "openWorldHint": true
+    },
+    "inputSchema": {
+     "type": "object",
+     "properties": {
+      "query": {
+       "type": "string",
+       "description": "What the tool should do. For example: 'extract text from a pdf'."
+      },
+      "limit": {
+       "type": "integer",
+       "minimum": 1,
+       "maximum": 50,
+       "default": 10
+      },
+      "with_schema": {
+       "type": "boolean",
+       "default": false,
+       "description": "Include each tool's full JSON input schema. Verbose; off by default."
+      }
+     },
+     "required": [
+      "query"
+     ]
+    }
+   },
+   {
+    "name": "publish_resource",
+    "title": "Publish a resource to the index",
+    "description": "List an MCP server or an ARD-publishing domain in this index so other agents can discover it. Give `endpoint` for an MCP server URL, or `domain` for a site that serves an ARD manifest. The submission is verified before it is indexed: an endpoint must complete an MCP initialize handshake, and a domain must serve a manifest that parses. Nothing is taken on trust, so a listing that succeeds here is one an agent can actually call.",
+    "annotations": {
+     "title": "Publish a resource",
+     "readOnlyHint": false,
+     "destructiveHint": false,
+     "idempotentHint": true,
+     "openWorldHint": true
+    },
+    "inputSchema": {
+     "type": "object",
+     "properties": {
+      "endpoint": {
+       "type": "string",
+       "description": "Absolute URL of an MCP server, e.g. https://example.com/mcp"
+      },
+      "domain": {
+       "type": "string",
+       "description": "A domain serving /.well-known/ard.json, e.g. example.com"
+      }
+     }
+    }
+   },
+   {
+    "name": "registry_stats",
+    "title": "Index statistics",
+    "description": "How large this index is, what it holds, how much of it has been verified by introspection, and which upstream registries are federated.",
+    "annotations": {
+     "title": "Index statistics",
+     "readOnlyHint": true,
+     "destructiveHint": false,
+     "idempotentHint": true
+    },
+    "inputSchema": {
+     "type": "object",
+     "properties": {}
+    }
+   }
+  ]
+ }
+}

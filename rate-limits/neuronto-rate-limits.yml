@@ -1,0 +1,37 @@
+generated: '2026-09-07'
+method: probed
+source: https://neuronto.com/pricing + live response headers observed 2026-09-07
+name: Neuronto Rate Limits
+description: Published allowances from the pricing page, confirmed at runtime - a
+  live anonymous POST /audit returned X-RateLimit-Limit 30, X-RateLimit-Remaining
+  29 and an epoch-second X-RateLimit-Reset, matching the documented 30 audits/hour.
+limit_count: 5
+limits:
+- scope: per-caller, anonymous, POST /submit
+  window: 1 hour
+  limit: 60
+- scope: per-caller, anonymous, POST /audit
+  window: 1 hour
+  limit: 30
+  note: The expensive operation - roughly 25 outbound requests each (provider's
+    wording).
+- scope: per-key, Verified tier, POST /submit
+  window: 1 hour
+  limit: 300
+- scope: per-key, Verified tier, POST /audit
+  window: 1 hour
+  limit: 200
+- scope: per-key, Pro tier
+  window: 1 hour
+  limit: ~5x Verified allowances (exact numbers quoted per customer)
+headers:
+- X-RateLimit-Limit
+- X-RateLimit-Remaining
+- X-RateLimit-Reset
+reset_format: epoch seconds
+exhaustion_status: 429
+evidence:
+  url: https://neuronto.com/audit
+  observed: 'x-ratelimit-limit: 30 / x-ratelimit-remaining: 29 / x-ratelimit-reset:
+    1788786000'
+  date: '2026-09-07'

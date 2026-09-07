@@ -1,0 +1,66 @@
+generated: '2026-09-07'
+method: probed
+source: live probes of neuronto.com + https://neuronto.com/llms.txt + https://neuronto.com/published
+name: Neuronto Conformance Profile
+description: Standards this registry demonstrably conforms to. ARD (Agentic Resource
+  Discovery) is the domain standard for this market — agent/tool discovery registries
+  — and the contract itself declares it, not just prose. Evidence rows are URLs
+  fetched on 2026-09-07 with the body confirming the claim.
+conformance:
+- id: ard
+  name: Agentic Resource Discovery (ARD) v0.91/1.0
+  conforms: true
+  domain_standard: true
+  evidence:
+  - https://neuronto.com/.well-known/ard.json
+  - https://neuronto.com/robots.txt
+  note: The provider serves a specVersion 1.0 ARD manifest at the specification's
+    well-known path, advertises it via the robots.txt "Agentmap:" directive, and
+    states it passes the specification's own conformance tool as both registry and
+    publisher with zero errors and zero warnings (llms.txt; conformance page at
+    /ard-conformance). The API implements the spec's federation:auto search
+    (POST /search), /explore facets (spec §5.3.3) and GET /agents paginated listing.
+- id: mcp
+  name: Model Context Protocol (2025-06-18)
+  conforms: true
+  evidence:
+  - https://neuronto.com/mcp
+  - https://neuronto.com/.well-known/mcp/server-card.json
+  note: Live streamable-http MCP server answered tools/list unauthenticated (HTTP
+    200); server card declares protocolVersion 2025-06-18; listed in the official
+    MCP Registry with a DNS-verified namespace.
+- id: a2a
+  name: A2A protocol 0.3
+  conforms: true
+  evidence:
+  - https://neuronto.com/.well-known/agent-card.json
+  note: Conformant agent card (capabilities object, protocolVersion, skills array)
+    served at the canonical path, with the legacy /.well-known/agent.json also
+    answered; JSONRPC interface at https://neuronto.com/a2a.
+- id: did-web
+  name: DID (did:web)
+  conforms: true
+  evidence:
+  - https://neuronto.com/.well-known/did.json
+  note: did:web:neuronto.com document with ArdCatalog, ArdRegistry and MCPServer
+    service endpoints.
+- id: pagination
+  name: Paginated listing
+  conforms: true
+  evidence:
+  - https://neuronto.com/agents
+  note: GET /agents is the ARD specification's deterministic paginated object
+    listing; the provider states it passes the conformance tool including this
+    check.
+- id: oauth2
+  conforms: false
+  evidence:
+  - https://neuronto.com/.well-known/oauth-authorization-server
+  note: No OAuth surface — the API is anonymous by default with an optional
+    API key; the well-known OAuth metadata paths return 404.
+- id: rfc9457
+  conforms: false
+  evidence:
+  - https://neuronto.com/openapi.json
+  note: Errors use the FastAPI validation envelope (HTTPValidationError with
+    detail[]), not application/problem+json.

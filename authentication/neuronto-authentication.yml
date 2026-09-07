@@ -1,0 +1,29 @@
+generated: '2026-09-07'
+method: searched
+source: https://neuronto.com/pricing
+name: Neuronto Authentication Profile
+description: The API, MCP server and A2A interface are all anonymous by default -
+  "no key, no signup" is the product's stated posture, and the live MCP tools/list
+  and REST endpoints answered unauthenticated probes on 2026-09-07. An optional API
+  key exists purely to raise allowances and unlock domain-scoped features.
+default: anonymous
+schemes:
+- type: none
+  scope: All search, publishing, console and data-feed endpoints, the MCP server
+    and the A2A interface work with no credential at anonymous allowances.
+- type: apiKey
+  required: false
+  obtained: Prove control of a domain with one DNS record via POST /claim then
+    POST /claim/verify ("Verified" tier, free). The MCP server card declares
+    authentication.required false with no schemes.
+  delivery: Not documented publicly; the first-party CLI passes it as --key KEY.
+    The OpenAPI declares no securitySchemes.
+  grants: ~6x anonymous allowances, 30 days of rank history, unlogged searches,
+    and the domain-scoped /private/entries surface (internal services visible only
+    to that domain's key). Pro keys (contact) raise allowances ~5x further with
+    metering readable at GET /me.
+notes:
+- GET /me answers without a key, returning the free-tier allowances rather than an
+  error.
+- No OAuth/OIDC surface; /.well-known/oauth-authorization-server and
+  /openid-configuration both 404.

@@ -1,0 +1,118 @@
+# generated: 2026-09-07
+# method: generated
+# source: openapi/neuronto-openapi.json + provider pages fetched 2026-09-07
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements to the Neuronto ARD Registry OpenAPI
+  version: 1.0.0
+extends: openapi/neuronto-openapi.json
+actions:
+- target: $.info
+  update:
+    license:
+      name: Apache-2.0
+      url: https://www.apache.org/licenses/LICENSE-2.0
+    contact:
+      name: Neuronto
+      url: https://neuronto.com
+    termsOfService: https://neuronto.com/privacy
+- target: $.info
+  update:
+    x-external-docs: https://neuronto.com/api-docs
+    x-llms-txt: https://neuronto.com/llms.txt
+    x-mcp-server: https://neuronto.com/mcp
+    x-a2a-agent-card: https://neuronto.com/.well-known/agent-card.json
+    x-ard-manifest: https://neuronto.com/.well-known/ard.json
+- target: $.paths['/search'].post
+  update:
+    tags: [Search]
+- target: $.paths['/explore'].post
+  update:
+    tags: [Search]
+- target: $.paths['/tools'].post
+  update:
+    tags: [Search]
+- target: $.paths['/tools'].get
+  update:
+    tags: [Search]
+- target: $.paths['/agents'].get
+  update:
+    tags: [Listing]
+- target: $.paths['/submit'].post
+  update:
+    tags: [Publishing]
+- target: $.paths['/submit/status/{sid}'].get
+  update:
+    tags: [Publishing]
+- target: $.paths['/submit/status'].get
+  update:
+    tags: [Publishing]
+- target: $.paths['/manifest/build'].post
+  update:
+    tags: [Publishing]
+- target: $.paths['/claim'].post
+  update:
+    tags: [Verification]
+- target: $.paths['/claim/verify'].post
+  update:
+    tags: [Verification]
+- target: $.paths['/audit'].post
+  update:
+    tags: [Console]
+- target: $.paths['/doctor'].post
+  update:
+    tags: [Console]
+- target: $.paths['/plan'].post
+  update:
+    tags: [Console]
+- target: $.paths['/insights'].get
+  update:
+    tags: [Console]
+- target: $.paths['/usage'].get
+  update:
+    tags: [Console]
+- target: $.paths['/web-position'].get
+  update:
+    tags: [Console]
+- target: $.paths['/analytics'].get
+  update:
+    tags: [Console]
+- target: $.paths['/me'].get
+  update:
+    tags: [Account]
+- target: $.paths['/private/entries'].get
+  update:
+    tags: [Private Index]
+- target: $.paths['/private/entries'].post
+  update:
+    tags: [Private Index]
+- target: $.paths['/private/entries'].delete
+  update:
+    tags: [Private Index]
+- target: $.paths['/health'].get
+  update:
+    tags: [Feeds]
+- target: $.paths['/stats'].get
+  update:
+    tags: [Feeds]
+- target: $.paths['/demand'].get
+  update:
+    tags: [Feeds]
+- target: $.paths['/bench'].get
+  update:
+    tags: [Feeds]
+- target: $.paths['/adoption'].get
+  update:
+    tags: [Feeds]
+- target: $.paths['/state-of-mcp'].get
+  update:
+    tags: [Feeds]
+- target: $.paths['/reliability'].get
+  update:
+    tags: [Feeds]
+- target: $.paths['/tool-safety'].get
+  update:
+    tags: [Feeds]
+- target: $.paths['/liveness'].get
+  update:
+    tags: [Feeds]

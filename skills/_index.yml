@@ -1,0 +1,13 @@
+generated: '2026-09-07'
+method: generated
+source: openapi/neuronto-openapi.json + https://neuronto.com/llms.txt
+name: Neuronto Agent Skills
+description: Packaged agent skills for the registry's marquee flows, grounded in
+  real operationIds from the provider's OpenAPI and the live MCP tools/list.
+skills:
+- file: neuronto-find-a-resource.md
+  name: find-a-resource
+- file: neuronto-publish-and-verify.md
+  name: publish-and-verify
+- file: neuronto-audit-discoverability.md
+  name: audit-discoverability

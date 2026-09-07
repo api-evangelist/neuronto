@@ -1,0 +1,85 @@
+# Neuronto
+
+> Neuronto is a federated Agentic Resource Discovery (ARD) registry and index.
+> One search finds the MCP servers, skills, agents and APIs that can do a task,
+> across this index and every other public ARD registry at once.
+
+## What is ARD?
+
+ARD stands for Agentic Resource Discovery: an open specification for how AI
+agents find the tools, skills, agents and APIs they need, published in June 2026
+by a working group including Google, Microsoft, Hugging Face, AWS, Cisco,
+GitHub, Nvidia, Salesforce and Snowflake.
+
+An agentic resource is anything an AI client can call to get work done. ARD
+answers "what is available for this task?" and then gets out of the way. It is a
+discovery layer, not a runtime, and does not replace MCP or A2A.
+
+## What is an ARD registry?
+
+A registry indexes the resource descriptions publishers serve on their own
+domains and answers search queries over them. Publishers describe what they
+offer at /.well-known/ard.json. Neuronto is an ARD registry and a publisher.
+
+## Index
+
+15412 resources from 6926 publishers, 14522 verified
+to respond. Refreshed continuously.
+
+## API (ARD v0.91, no key, no signup)
+
+- POST https://neuronto.com/search    {"query":{"text":"..."},"federation":"auto"}
+- POST https://neuronto.com/explore   facet counts over the index
+- GET  https://neuronto.com/agents    deterministic paginated listing
+- POST https://neuronto.com/mcp       the same search as an MCP tool
+
+## How to be listed (no key, no signup, no allowlist)
+
+Serving a manifest is not being indexed: a registry has to fetch it. Registries
+crawl domain lists they chose, so a domain outside one is invisible to it
+indefinitely. To be indexed here, send the domain or the endpoint.
+
+- POST https://neuronto.com/submit   {"domain":"example.com"}
+  Both well-known paths are fetched from that domain and whatever parses is
+  indexed in the same request.
+- POST https://neuronto.com/submit   {"endpoint":"https://example.com/mcp"}
+  For an MCP server with no manifest at all: the endpoint must complete an
+  initialize handshake and its own tools/list is read back.
+- MCP tool publish_resource on https://neuronto.com/mcp does the same thing
+  from inside a conversation.
+- A submission that does not verify at that moment is not dropped: the answer is
+  202 with status "pending", a submission id and the evidence of what the endpoint
+  returned, and it is retried automatically for about two and a half days.
+  GET https://neuronto.com/submit/status/<id> shows where it stands. One call is
+  enough; there is no need to resubmit.
+- POST https://neuronto.com/audit    {"domain":"example.com"}
+  Reports which registries return you, and whether this one can index you now.
+
+Nothing is taken on the submitter's word: everything listed was fetched from
+the domain that claims it. Publishing guide: https://neuronto.com/publish
+
+## What is different here
+
+- federation: auto is implemented. The ARD specification makes it the default
+  mode: query peer registries, merge, return one set. Neuronto fans out to every
+  public ARD registry concurrently and fuses with reciprocal rank fusion,
+  reporting which upstreams answered.
+- Passes the specification's conformance tool as both registry and publisher
+  with zero errors and zero warnings, including GET /agents as a paginated
+  object.
+- Media types and discovery URN prefixes are normalised on ingest, so a filter
+  for MCP servers returns them under all three spellings in circulation.
+- Indexed endpoints are probed; ones that do not answer are demoted.
+- Relevance scores are semantic only, never a trust or safety rating.
+
+## How to be discovered
+
+Serve an ARD manifest at /.well-known/ard.json on your domain, with
+representativeQueries on every entry. The crawler finds it. No submission form,
+no allowlist.
+
+## Discovery documents
+
+- https://neuronto.com/.well-known/ard.json
+- https://neuronto.com/.well-known/did.json
+- https://neuronto.com/robots.txt (carries the Agentmap: directive)

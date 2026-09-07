@@ -1,0 +1,47 @@
+generated: '2026-09-07'
+method: searched
+source: https://neuronto.com/published
+name: Neuronto Packages
+description: First-party packages published by Neuronto, confirmed against the PyPI
+  registry metadata API and the provider's own "Where we are published" page.
+packages:
+- name: neuronto
+  registry: pypi
+  url: https://pypi.org/project/neuronto/
+  official: true
+  language: Python
+  version: 1.0.0
+  published: '2026-09-02'
+  description: CLI + client library. Find the MCP servers, skills, agents and APIs
+    that can do a task, across every public ARD registry at once. No account, no
+    API key, no dependencies.
+  source_code: https://github.com/neuronto/agentic-resource-discovery
+- name: ard-publish
+  registry: pypi
+  url: https://pypi.org/project/ard-publish/
+  official: true
+  language: Python
+  version: 1.2.1
+  published: '2026-09-06'
+  description: Build, validate and verify an ARD manifest (/.well-known/ard.json)
+    for your own domain, and submit it for indexing.
+  source_code: https://github.com/neuronto/ard-publish
+- name: agentic-resource-discovery
+  registry: pypi
+  url: https://pypi.org/project/agentic-resource-discovery/
+  official: true
+  language: Python
+  version: 1.0.1
+  published: '2026-08-31'
+  description: Alias package for ard-publish (same tool under the specification's
+    own name).
+  source_code: https://github.com/neuronto/ard-publish
+datasets:
+- name: Verified MCP Tools
+  registry: huggingface
+  url: https://huggingface.co/datasets/AgenticResourceDiscovery/verified-mcp-tools
+  official: true
+  license: CC BY 4.0
+  description: 31,411 tools read from live servers' own tools/list, plus 7,708
+    introspection results including which endpoints demand credentials.
+note: Versions and publish dates read from pypi.org/pypi/<pkg>/json on 2026-09-07.

@@ -1,0 +1,46 @@
+generated: '2026-09-07'
+method: probed
+source: live probes of neuronto.com /.well-known/ paths, 2026-09-07
+name: Neuronto Well-Known Documents
+description: Every /.well-known/ document probed on the only host the record knows
+  (neuronto.com serves the website, the API baseURL and the OpenAPI servers[] host).
+  Five real documents served, including the ARD manifest the whole product is built
+  around and a did.json binding the registry to did:web:neuronto.com. robots.txt
+  additionally carries an "Agentmap:" directive pointing at the ARD manifest.
+hosts:
+- host: neuronto.com
+  documents:
+  - path: /.well-known/ard.json
+    status: 200
+    file: neuronto-ard.json
+    note: ARD v1.0 manifest (specVersion 1.0); the provider is both an ARD registry
+      and an ARD publisher.
+  - path: /.well-known/did.json
+    status: 200
+    file: neuronto-did.json
+    note: did:web document with ArdCatalog, ArdRegistry and MCPServer service endpoints.
+  - path: /.well-known/mcp/server-card.json
+    status: 200
+    file: neuronto-mcp-server-card.json
+    note: MCP server card, protocolVersion 2025-06-18, streamable-http remote at
+      https://neuronto.com/mcp, 4 tools inline.
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: ../a2a/neuronto-agent-card.json
+    note: A2A agent card (saved verbatim under a2a/).
+  - path: /.well-known/agent.json
+    status: 200
+    file: ../a2a/neuronto-agent-card.json
+    note: Legacy pre-0.3 path serves a byte-identical copy of the canonical card.
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404

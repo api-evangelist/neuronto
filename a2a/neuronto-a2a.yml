@@ -1,0 +1,30 @@
+generated: '2026-09-07'
+method: probed
+source: https://neuronto.com/.well-known/agent-card.json
+name: Neuronto A2A Agent Card
+description: First-party A2A agent card served by the provider on its own host, at
+  both the canonical and the legacy well-known paths (byte-identical bodies). The
+  card exposes the registry's three search/stats skills over a JSONRPC interface
+  at https://neuronto.com/a2a, and its additionalInterfaces[] also point at the MCP
+  endpoint and the ARD manifest.
+card: neuronto-agent-card.json
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: neuronto.com
+  legacy_path_also_served: /.well-known/agent.json
+x-evidence:
+  fetched: '2026-09-07'
+  url: https://neuronto.com/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+grade: conformant
+grade_basis:
+  protocol_version: '0.3'
+  capabilities_is_object: true
+  skills_is_array: true
+  skills_count: 3
+  preferred_transport: JSONRPC
+  default_input_modes: [text/plain]
+  default_output_modes: [text/plain, application/json]
+deviations: []
