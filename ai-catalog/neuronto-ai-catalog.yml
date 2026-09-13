@@ -22,7 +22,6 @@ conformance:
   hard_failures: []
   soft_gaps:
   - content-type-not-ai-catalog-json
-  - cors-not-wildcard
   official_tool:
     tool: ARD conformance-test v0.9.1 (ards-project/ard-spec)
     status: PASS
@@ -49,7 +48,7 @@ catalog:
 transport:
   http_status: 200
   content_type: application/json
-  access_control_allow_origin: null
+  access_control_allow_origin: '*'
 x-evidence:
   fetched: '2026-09-13'
   url: https://neuronto.com/.well-known/ard.json
