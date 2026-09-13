@@ -30,6 +30,11 @@ conformance:
     errors: []
     warnings: []
     informational: []
+  did_web:
+    identifier: did:web:neuronto.com
+    resolved: true
+    verification_methods: 0
+    http_status: 200
 catalog:
   host_display_name: 'Neuronto ARD Registry: Agentic Resource Discovery (ARD) index'
   host_identifier: did:web:neuronto.com
