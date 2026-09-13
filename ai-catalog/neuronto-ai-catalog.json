@@ -1,0 +1,97 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Neuronto ARD Registry: Agentic Resource Discovery (ARD) index",
+    "identifier": "did:web:neuronto.com",
+    "documentationUrl": "https://neuronto.com/about"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:neuronto.com:registry:neuronto",
+      "displayName": "Neuronto ARD Registry: Agentic Resource Discovery (ARD) registry",
+      "type": "application/ai-registry+json",
+      "url": "https://neuronto.com/search",
+      "description": "A federated ARD registry and index. Implements federation: auto with reciprocal rank fusion across every other public ARD registry, normalises the competing MCP media types and URN prefixes so filters do not silently miss, and probes endpoints so dead resources are demoted rather than served.",
+      "representativeQueries": [
+        "which ARD registries exist",
+        "a registry that federates other MCP registries",
+        "search every MCP and ARD registry at once",
+        "where can I search for MCP servers, skills and agents",
+        "how do AI agents discover MCP servers"
+      ],
+      "tags": [
+        "registry",
+        "discovery",
+        "ard",
+        "federation",
+        "index",
+        "mcp",
+        "mcp-server",
+        "search",
+        "tool-discovery",
+        "agents"
+      ],
+      "trustManifest": {
+        "identity": "did:web:neuronto.com"
+      }
+    },
+    {
+      "identifier": "urn:air:neuronto.com:tool:ard-publish",
+      "displayName": "ard-publish - build and verify an ARD manifest",
+      "type": "application/ai-catalog+json",
+      "url": "https://neuronto.com/publish",
+      "description": "Open source tool that builds, validates and verifies an Agentic Resource Discovery manifest, then checks which registries actually return your domain. pip install ard-publish.",
+      "representativeQueries": [
+        "how to make my MCP server discoverable",
+        "how do I publish an ARD manifest",
+        "make my API discoverable by AI agents",
+        "which registries actually return my domain",
+        "validate my ai-catalog.json"
+      ],
+      "tags": [
+        "ard",
+        "sdk",
+        "publishing",
+        "validation",
+        "python",
+        "open-source",
+        "mcp-server",
+        "discoverability",
+        "manifest"
+      ],
+      "trustManifest": {
+        "identity": "did:web:neuronto.com"
+      }
+    },
+    {
+      "identifier": "urn:air:neuronto.com:mcp:discovery",
+      "displayName": "Neuronto ARD Registry: ARD and MCP discovery (MCP server)",
+      "type": "application/mcp-server-card+json",
+      "url": "https://neuronto.com/.well-known/mcp/server-card.json",
+      "description": "The same federated discovery as an MCP server, so an agent can search every ARD registry from the tool interface it already speaks.",
+      "capabilities": [
+        "find_resource",
+        "registry_stats"
+      ],
+      "representativeQueries": [
+        "an MCP server that finds other MCP servers",
+        "a tool to search every ARD registry at once",
+        "give my agent the ability to discover tools at runtime",
+        "search the agent-readable web from one MCP tool"
+      ],
+      "tags": [
+        "mcp",
+        "discovery",
+        "search",
+        "ard",
+        "mcp-server",
+        "tool-discovery",
+        "registry",
+        "agents"
+      ],
+      "trustManifest": {
+        "identity": "did:web:neuronto.com"
+      }
+    }
+  ]
+}
