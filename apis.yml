@@ -16,27 +16,18 @@ tags:
 - API Discovery
 - Registry
 apis:
-- aid: neuronto:ard-registry
-  name: Neuronto ARD Registry API
-  description: 'Search, explore and audit Agentic Resource Discovery entries: MCP servers, A2A agents, OpenAPI services
-    and documentation. REST, MCP and A2A answer from one index. No key, no signup.'
-  image: https://neuronto.com/icon.svg
+- aid: neuronto:neuronto-adoption-api
+  name: Neuronto ARD Registry Adoption API
+  description: The Adoption API from Neuronto ARD Registry — 1 operation(s) for adoption.
   humanURL: https://neuronto.com
   baseURL: https://neuronto.com
   tags:
-  - Agentic Resource Discovery
-  - ARD
-  - MCP
-  - A2A
-  - API Discovery
-  - Registry
+  - Adoption
   properties:
   - type: OpenAPI
-    url: openapi/neuronto-openapi.json
+    url: openapi/neuronto-adoption-api-openapi.yml
   - type: Documentation
     url: https://neuronto.com/api-docs
-  - type: MCPServer
-    url: mcp/neuronto-mcp.yml
   - type: MCPServerCard
     url: https://neuronto.com/.well-known/mcp/server-card.json
   - type: ToolCrosswalk
@@ -49,8 +40,630 @@ apis:
     url: https://github.com/neuronto/agentic-resource-discovery
   - type: License
     url: https://www.apache.org/licenses/LICENSE-2.0
-  - type: Overlay
-    url: overlays/neuronto-ard-registry-overlay.yaml
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-agents-api
+  name: Neuronto ARD Registry Agents API
+  description: The Agents API from Neuronto ARD Registry — 1 operation(s) for agents.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Agents
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-agents-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-analytics-api
+  name: Neuronto ARD Registry Analytics API
+  description: The Analytics API from Neuronto ARD Registry — 1 operation(s) for analytics.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Analytics
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-analytics-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-audit-api
+  name: Neuronto ARD Registry Audit API
+  description: The Audit API from Neuronto ARD Registry — 1 operation(s) for audit.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Audit
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-audit-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-bench-api
+  name: Neuronto ARD Registry Bench API
+  description: The Bench API from Neuronto ARD Registry — 1 operation(s) for bench.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Bench
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-bench-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-claim-api
+  name: Neuronto ARD Registry Claim API
+  description: The Claim API from Neuronto ARD Registry — 2 operation(s) for claim.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Claim
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-claim-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-demand-api
+  name: Neuronto ARD Registry Demand API
+  description: The Demand API from Neuronto ARD Registry — 1 operation(s) for demand.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Demand
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-demand-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-doctor-api
+  name: Neuronto ARD Registry Doctor API
+  description: The Doctor API from Neuronto ARD Registry — 1 operation(s) for doctor.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Doctor
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-doctor-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-explore-api
+  name: Neuronto ARD Registry Explore API
+  description: The Explore API from Neuronto ARD Registry — 1 operation(s) for explore.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Explore
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-explore-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-health-api
+  name: Neuronto ARD Registry Health API
+  description: The Health API from Neuronto ARD Registry — 1 operation(s) for health.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-health-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-insights-api
+  name: Neuronto ARD Registry Insights API
+  description: The Insights API from Neuronto ARD Registry — 1 operation(s) for insights.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Insights
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-insights-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-liveness-api
+  name: Neuronto ARD Registry Liveness API
+  description: The Liveness API from Neuronto ARD Registry — 1 operation(s) for liveness.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Liveness
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-liveness-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-manifest-api
+  name: Neuronto ARD Registry Manifest API
+  description: The Manifest API from Neuronto ARD Registry — 1 operation(s) for manifest.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Manifest
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-manifest-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-me-api
+  name: Neuronto ARD Registry Me API
+  description: The Me API from Neuronto ARD Registry — 1 operation(s) for me.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Me
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-me-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-plan-api
+  name: Neuronto ARD Registry Plan API
+  description: The Plan API from Neuronto ARD Registry — 1 operation(s) for plan.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Plan
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-plan-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-private-api
+  name: Neuronto ARD Registry Private API
+  description: The Private API from Neuronto ARD Registry — 1 operation(s) for private.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Private
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-private-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-reliability-api
+  name: Neuronto ARD Registry Reliability API
+  description: The Reliability API from Neuronto ARD Registry — 1 operation(s) for reliability.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Reliability
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-reliability-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-search-api
+  name: Neuronto ARD Registry Search API
+  description: The Search API from Neuronto ARD Registry — 1 operation(s) for search.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-search-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-state-of-mcp-api
+  name: Neuronto ARD Registry State Of Mcp API
+  description: The State Of Mcp API from Neuronto ARD Registry — 1 operation(s) for state of mcp.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - State Of Mcp
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-state-of-mcp-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-stats-api
+  name: Neuronto ARD Registry Stats API
+  description: The Stats API from Neuronto ARD Registry — 1 operation(s) for stats.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Stats
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-stats-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-submit-api
+  name: Neuronto ARD Registry Submit API
+  description: The Submit API from Neuronto ARD Registry — 3 operation(s) for submit.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Submit
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-submit-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-tool-safety-api
+  name: Neuronto ARD Registry Tool Safety API
+  description: The Tool Safety API from Neuronto ARD Registry — 1 operation(s) for tool safety.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Tool Safety
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-tool-safety-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-tools-api
+  name: Neuronto ARD Registry Tools API
+  description: The Tools API from Neuronto ARD Registry — 1 operation(s) for tools.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Tools
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-tools-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-usage-api
+  name: Neuronto ARD Registry Usage API
+  description: The Usage API from Neuronto ARD Registry — 1 operation(s) for usage.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Usage
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-usage-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  - type: ErrorCatalog
+    url: errors/neuronto-problem-types.yml
+- aid: neuronto:neuronto-web-position-api
+  name: Neuronto ARD Registry Web Position API
+  description: The Web Position API from Neuronto ARD Registry — 1 operation(s) for web position.
+  humanURL: https://neuronto.com
+  baseURL: https://neuronto.com
+  tags:
+  - Web Position
+  properties:
+  - type: OpenAPI
+    url: openapi/neuronto-web-position-api-openapi.yml
+  - type: Documentation
+    url: https://neuronto.com/api-docs
+  - type: MCPServerCard
+    url: https://neuronto.com/.well-known/mcp/server-card.json
+  - type: ToolCrosswalk
+    url: mcp/neuronto-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/neuronto-a2a.yml
+  - type: Website
+    url: https://neuronto.com
+  - type: GitHubRepository
+    url: https://github.com/neuronto/agentic-resource-discovery
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
   - type: ErrorCatalog
     url: errors/neuronto-problem-types.yml
 maintainers:
@@ -61,6 +674,10 @@ x-source:
   fetched: '2026-09-07'
   note: Only the self url re-pointed; descriptor is theirs.
 common:
+- type: MCPServer
+  url: mcp/neuronto-mcp.yml
+- type: Overlay
+  url: overlays/neuronto-ard-registry-overlay.yaml
 - type: DomainSecurity
   url: security/neuronto-domain-security.yml
 - type: Packages
