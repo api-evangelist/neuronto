@@ -334,6 +334,8 @@ apis:
   humanURL: https://neuronto.com
   baseURL: https://neuronto.com
   tags:
+  - Manifests
+  tags_raw:
   - Manifest
   properties:
   - type: OpenAPI
