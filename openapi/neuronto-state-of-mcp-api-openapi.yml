@@ -1,0 +1,34 @@
+openapi: 3.2.0
+info:
+  title: 'Neuronto ARD Registry: Agentic Resource Discovery (ARD)…'
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: 1.0.0
+servers:
+- url: https://neuronto.com
+tags:
+- name: State Of Mcp
+paths:
+  /state-of-mcp:
+    get:
+      summary: State Of Mcp
+      description: 'What share of the agentic web actually answers, measured not asserted.
+
+
+        Published because nobody else can: a directory knows what it lists, and only
+
+        something that probes knows what responds. JSON to a machine, HTML to a
+
+        browser, and the limitations travel inside the payload rather than in a
+
+        footnote, so a reader who quotes the number also gets its caveats.'
+      operationId: state_of_mcp_state_of_mcp_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - State Of Mcp

@@ -1,0 +1,33 @@
+# Front Door AI Index — neuronto — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: neuronto
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: neuronto.com
+  final_host: neuronto.com
+  ownership: own
+  owner: neuronto
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 24
+  host_score: 24
+  density: 22.88
+  words: 1049
+  tiers:
+    agentic: 17
+    core: 3
+    model: 4
+  ambiguous: 21
+  top_terms:
+    agent: 21
+    MCP: 9
+    agentic: 6
+    AI: 3
+    Hugging Face: 2
+    AI agent: 1
+    Claude: 1
+    OpenAI: 1
+    llms.txt: 1

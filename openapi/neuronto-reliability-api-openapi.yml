@@ -1,0 +1,88 @@
+openapi: 3.2.0
+info:
+  title: 'Neuronto ARD Registry: Agentic Resource Discovery (ARD)…'
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: 1.0.0
+servers:
+- url: https://neuronto.com
+tags:
+- name: Reliability
+paths:
+  /reliability:
+    get:
+      summary: Reliability Report
+      description: 'How reliably endpoints answer, over time rather than at one instant.
+
+
+        `/state-of-mcp` says what share of the index answers right now. This says
+
+        what share of *probes* an endpoint has answered, which is the question a
+
+        consumer actually has, and it is only answerable by something that has been
+
+        probing on a timer and counting.
+
+
+        Rates are withheld below a minimum number of probes. A single successful
+
+        probe is not 100% uptime, and publishing it as one would be the most quotable
+
+        wrong number on the site.'
+      operationId: reliability_report_reliability_get
+      parameters:
+      - name: entry
+        in: query
+        required: false
+        schema:
+          type: string
+          maxLength: 400
+          default: ''
+          title: Entry
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Reliability
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

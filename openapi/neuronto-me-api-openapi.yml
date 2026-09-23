@@ -1,0 +1,30 @@
+openapi: 3.2.0
+info:
+  title: 'Neuronto ARD Registry: Agentic Resource Discovery (ARD)…'
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: 1.0.0
+servers:
+- url: https://neuronto.com
+tags:
+- name: Me
+paths:
+  /me:
+    get:
+      summary: Me Endpoint
+      description: 'What this caller has, and what they have used.
+
+
+        A caller with no key gets the free numbers rather than an error: the
+
+        question "what am I allowed" deserves an answer whoever asks it.'
+      operationId: me_endpoint_me_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - Me

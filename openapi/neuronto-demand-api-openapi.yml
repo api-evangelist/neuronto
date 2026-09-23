@@ -1,0 +1,107 @@
+openapi: 3.2.0
+info:
+  title: 'Neuronto ARD Registry: Agentic Resource Discovery (ARD)…'
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: 1.0.0
+servers:
+- url: https://neuronto.com
+tags:
+- name: Demand
+paths:
+  /demand:
+    get:
+      summary: Demand Endpoint
+      description: 'Did anyone come looking, and what did they ask?
+
+
+        Being listed is not the question a publisher has; this is. Every search
+
+        records which entries it returned and at what rank, so the answer is exact
+
+        rather than modelled. No client identifier is ever stored, so this can say
+
+        what was asked and never who asked.'
+      operationId: demand_endpoint_demand_get
+      parameters:
+      - name: domain
+        in: query
+        required: true
+        schema:
+          type: string
+          minLength: 3
+          title: Domain
+      - name: days
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 365
+          minimum: 1
+          default: 30
+          title: Days
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 200
+          minimum: 1
+          default: 25
+          title: Limit
+      - name: include_probe
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1
+          minimum: 0
+          default: 0
+          title: Include Probe
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Demand
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

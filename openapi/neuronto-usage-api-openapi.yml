@@ -1,0 +1,94 @@
+openapi: 3.2.0
+info:
+  title: 'Neuronto ARD Registry: Agentic Resource Discovery (ARD)…'
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: 1.0.0
+servers:
+- url: https://neuronto.com
+tags:
+- name: Usage
+paths:
+  /usage:
+    get:
+      summary: Usage Endpoint
+      description: 'How much a publisher''s work is actually used, over time.
+
+
+        Adoption, not demand. Every figure is a count somebody else publishes,
+
+        read from a free API, so a publisher can check any of it with curl. It
+
+        says how often the thing was installed, starred and depended on. It does
+
+        not say how many agents went looking, because nobody can say that.'
+      operationId: usage_endpoint_usage_get
+      parameters:
+      - name: domain
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+          title: Domain
+      - name: metric
+        in: query
+        required: false
+        schema:
+          type: string
+          default: stars
+          title: Metric
+      - name: days
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 30
+          title: Days
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Usage
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

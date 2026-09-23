@@ -1,0 +1,140 @@
+openapi: 3.2.0
+info:
+  title: 'Neuronto ARD Registry: Agentic Resource Discovery (ARD)…'
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: 1.0.0
+servers:
+- url: https://neuronto.com
+tags:
+- name: Submit
+paths:
+  /submit:
+    post:
+      summary: Submit Endpoint
+      description: 'Index an MCP endpoint (`{"endpoint": url}`) or a manifest-serving domain
+
+        (`{"domain": host}`). A submission that does not verify right now is kept
+
+        and retried on a fixed schedule for about two and a half days.'
+      operationId: submit_endpoint_submit_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: Body
+        required: true
+      responses:
+        '200':
+          description: verified and indexed; `submission.id` is the receipt
+          content:
+            application/json:
+              schema: {}
+        '202':
+          description: 'kept and retried: not verified at this moment, `evidence` says what the endpoint returned, `retry.status_url` shows progress'
+        '400':
+          description: malformed request, nothing queued
+        '404':
+          description: every retry attempt failed; the last `evidence` is included
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Submit
+  /submit/status/{sid}:
+    get:
+      summary: Submit Status
+      description: 'Where a submission stands. Public, because the id is the only
+
+        credential a publisher has for it and there is nothing sensitive in it.'
+      operationId: submit_status_submit_status__sid__get
+      parameters:
+      - name: sid
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Sid
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Submit
+  /submit/status:
+    get:
+      summary: Submit Status For
+      description: The latest submission for a target, for a publisher who lost the id.
+      operationId: submit_status_for_submit_status_get
+      parameters:
+      - name: endpoint
+        in: query
+        required: false
+        schema:
+          type: string
+          title: Endpoint
+      - name: domain
+        in: query
+        required: false
+        schema:
+          type: string
+          title: Domain
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Submit
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

@@ -1,0 +1,90 @@
+openapi: 3.2.0
+info:
+  title: 'Neuronto ARD Registry: Agentic Resource Discovery (ARD)…'
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: 1.0.0
+servers:
+- url: https://neuronto.com
+tags:
+- name: Tool Safety
+paths:
+  /tool-safety:
+    get:
+      summary: Tool Safety
+      description: 'What tool descriptions in the index tell the model to do.
+
+
+        A tool description is text that enters the model''s context and is read as
+
+        instruction, so it is the one part of a third-party server that acts on an
+
+        agent before the agent calls anything.
+
+
+        The measurement is published because the answer is a surprise: the corpus is
+
+        close to clean. It is deliberately NOT a score, a badge or a ranking signal.
+
+        Findings are counts and excerpts for a human to read, and the classes the
+
+        detectors refuse to match are published alongside the ones they do, because
+
+        an earlier draft of this scan was wrong about four legitimate publishers.'
+      operationId: tool_safety_tool_safety_get
+      parameters:
+      - name: entry
+        in: query
+        required: false
+        schema:
+          type: string
+          maxLength: 400
+          default: ''
+          title: Entry
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Tool Safety
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

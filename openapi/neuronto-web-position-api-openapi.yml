@@ -1,0 +1,85 @@
+openapi: 3.2.0
+info:
+  title: 'Neuronto ARD Registry: Agentic Resource Discovery (ARD)…'
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: 1.0.0
+servers:
+- url: https://neuronto.com
+tags:
+- name: Web Position
+paths:
+  /web-position:
+    get:
+      summary: Web Position Endpoint
+      description: 'Where a publisher sits on the open web, for the phrasings we track.
+
+
+        It belongs next to registry position because models cite third-party
+
+        pages: a resource that ranks first in every registry and nowhere on the
+
+        web is invisible to the systems it is trying to reach.'
+      operationId: web_position_endpoint_web_position_get
+      parameters:
+      - name: domain
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+          title: Domain
+      - name: days
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 30
+          title: Days
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Web Position
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

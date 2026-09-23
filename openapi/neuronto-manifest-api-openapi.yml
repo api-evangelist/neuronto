@@ -1,0 +1,81 @@
+openapi: 3.2.0
+info:
+  title: 'Neuronto ARD Registry: Agentic Resource Discovery (ARD)…'
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: 1.0.0
+servers:
+- url: https://neuronto.com
+tags:
+- name: Manifest
+paths:
+  /manifest/build:
+    post:
+      summary: Manifest Build
+      description: 'Write the manifest for a domain from what that domain already publishes.
+
+
+        Most domains will never author one by hand, and they do not have to: an MCP
+
+        server, an OpenAPI document or an llms.txt is already the substance of an
+
+        entry. Nothing here is inferred from a name or guessed from a pattern. Every
+
+        entry cites the fetch that produced it, so the publisher can check each line
+
+        against their own server before they adopt it.'
+      operationId: manifest_build_manifest_build_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: Body
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Manifest
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
