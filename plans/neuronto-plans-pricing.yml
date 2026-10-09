@@ -52,3 +52,35 @@ plans:
   includes:
   - Isolated private tables, never mixed with or ranked against the public index
   note: Priced when somebody wants it (provider's wording).
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - negotiated
+  units: []
+  plans:
+  - name: Free
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Verified
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Pro
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Private index
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
