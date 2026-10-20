@@ -23,24 +23,34 @@ server_card: ../well-known/neuronto-mcp-server-card.json
 registry_listing: https://registry.modelcontextprotocol.io/v0/servers?search=neuronto
 tools:
 - name: find_resource
+  description: 'Search for an MCP server, skill, agent, API or other callable capability for a task, across
+    this index and every other public ARD registry at once. Returns ranked matches with a relevance score,
+    the endpoint to connect to, and which registries carry each result. The score is relevance only and
+    is not a trust or safety rating. Filter by payment (free, payable, x402, mpp) and a maximum price
+    per call: terms come from the publisher''s manifest or the endpoint''s own 402 answer, and the caller
+    pays the provider directly.'
   title: Find an agentic resource
   read_only: true
-  description: Search for an MCP server, skill, agent, API or other callable capability for a task, across
-    this index and every other public ARD registry at once.
 - name: find_tool
+  description: Search individual MCP tools by name and behaviour, not the servers that host them. Every
+    tool returned here was read back from a live server's tools/list, so the name and input schema are
+    what the server actually exposes rather than what its description claims. Use this when you know the
+    shape of the call you need; use find_resource when you are looking for a service.
   title: Find a specific verified tool
   read_only: true
-  description: Search individual MCP tools by name and behaviour; every tool returned was read back from
-    a live server's tools/list.
 - name: publish_resource
+  description: 'List an MCP server or an ARD-publishing domain in this index so other agents can discover
+    it. Give `endpoint` for an MCP server URL, or `domain` for a site that serves an ARD manifest. The
+    submission is verified before it is indexed: an endpoint must complete an MCP initialize handshake,
+    and a domain must serve a manifest that parses. Nothing is taken on trust, so a listing that succeeds
+    here is one an agent can actually call.'
   title: Publish a resource to the index
   read_only: false
-  description: List an MCP server (verified by initialize handshake) or an ARD-publishing domain (manifest
-    must parse) in the index.
 - name: registry_stats
+  description: How large this index is, what it holds, how much of it has been verified by introspection,
+    and which upstream registries are federated.
   title: Index statistics
   read_only: true
-  description: Index size, verification counts, and federated upstream registries.
 tools_list_response: neuronto-mcp-tools.json
 tool_quality:
   tool_count: 4
@@ -67,3 +77,4 @@ tool_quality:
   scored: false
   note: Facts from the saved tools/list capture (mcp_tool_quality.py); recorded, not scored. Checks learned
     from Glimind's agent-readiness audit.
+tools_count: 4
